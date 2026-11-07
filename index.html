@@ -248,6 +248,46 @@
             .arrow:active {
                 background-color: #A1004F;
             }
+    
+@media (max-width: 1200px) {
+  body { height: auto; min-height: 100dvh; overflow-x: clip; overflow-y: auto; align-items: flex-start; }
+  .wrapper { width: 100%; max-width: 100%; height: auto; min-height: 100dvh; }
+  header { padding: 24px clamp(20px, 4vw, 48px) 0; gap: 24px; flex-wrap: wrap; }
+  header nav { flex: 1; justify-content: flex-end; gap: 12px; }
+  header nav .left-links { gap: 16px; margin-right: 0; flex-wrap: wrap; }
+  header nav a { font-size: 17px; }
+  header nav .register { margin-right: 0; }
+  header nav .button { margin-left: 0; }
+  main { padding: 24px clamp(20px, 4vw, 48px) 80px; gap: 24px; min-width: 0; }
+  .left-panel { flex: 0 0 270px; }
+  .main-photo-section { min-width: 0; width: auto; flex: 1 1 auto; height: clamp(420px, 58vw, 650px); }
+  .slider { right: 12px; bottom: 18px; height: auto; padding: 8px; max-width: calc(100% - 24px); }
+  .slider video { height: 130px; min-width: 0; max-width: 46%; }
+  .slider-nav { bottom: -58px; }
+  .avatar { left: 0; bottom: auto; top: -56px; }
+}
+@media (max-width: 767px) {
+  header { display: flex; flex-direction: column; align-items: stretch; padding: 20px 18px 0; gap: 18px; }
+  .logo .top, .logo .bottom { font-size: 20px; }
+  header nav { display: flex; width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 8px 14px; }
+  header nav .left-links { display: flex; width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 18px; padding: 4px 0 10px; }
+  header nav .left-links::-webkit-scrollbar { display: none; }
+  header nav a { font-size: 16px; flex-shrink: 0; white-space: nowrap; }
+  header nav .button, header nav .register { margin: 0; font-size: 15px; }
+  main { display: flex; flex-direction: column-reverse; padding: 20px 18px 48px; gap: 44px; }
+  .main-photo-section { flex: none; width: 100%; height: auto; aspect-ratio: 4 / 4.5; min-height: 0; }
+  .main-photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .slider { right: 8px; left: 8px; bottom: 10px; height: auto; max-width: none; padding: 6px; justify-content: center; gap: 8px; }
+  .slider video { height: clamp(95px, 27vw, 150px); max-width: 46%; }
+  .slider-nav { bottom: -52px; gap: 20px; }
+  .arrow { width: 44px; height: 44px; }
+  .left-panel { flex: none; width: 100%; gap: 12px; position: relative; padding-top: 0; }
+  .bubble { width: 100%; height: auto; min-height: 0; padding: 20px; margin: 0; font-size: 16px; line-height: 1.45; transform: translateY(24px); }
+  .avatar { position: static; width: 48px; height: 48px; margin-bottom: 4px; }
+  .btn-register { display: block; width: 100%; min-height: 48px; margin: 10px 0 0; padding: 14px 20px; font-size: 17px; }
+}
+@media (max-width: 380px) { header, main { padding-left: 14px; padding-right: 14px; } }
+
     </style>
 </head>
 <body>

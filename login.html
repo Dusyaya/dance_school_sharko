@@ -85,6 +85,17 @@
                 .switch-form a:hover {
                     text-decoration: underline;
                 }
+    
+@media (max-width: 767px) {
+  body { display: flex; flex-direction: column; height: auto; min-height: 100dvh; background: #fff; }
+  .left { width: 100%; flex: 1 1 auto; padding: clamp(36px, 8vh, 72px) 20px 40px; justify-content: flex-start; }
+  .right { display: none; }
+  .left form { width: 100%; max-width: 480px; margin-inline: auto; }
+  .left h2, .left p, .switch-form { width: 100%; max-width: 480px; margin-left: auto; margin-right: auto; }
+  input { font-size: 16px; min-height: 48px; }
+  button { min-height: 48px; }
+}
+
     </style>
 </head>
 <body>
