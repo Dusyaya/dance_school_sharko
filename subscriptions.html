@@ -439,7 +439,30 @@
   header { padding-inline: 16px; }
 }
 
-    </style>
+    
+/* Мобильная навигация: десктопная версия не изменяется */
+.mobile-menu-toggle { display: none; }
+@media (max-width: 767px) {
+  header { position: relative; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; flex-wrap: wrap; gap: 10px !important; padding: 16px 18px !important; }
+  header .header-left { display: contents !important; }
+  header .logo { min-width: 0; }
+  header .signup-button, header .logout { display: none !important; }
+  .mobile-menu-toggle { display: flex; width: 44px; height: 44px; flex: 0 0 44px; align-items: center; justify-content: center; flex-direction: column; gap: 5px; border: 0; border-radius: 12px; background: rgba(255,255,255,.85); cursor: pointer; margin-left: auto; z-index: 12; }
+  .mobile-menu-toggle span { display: block; width: 21px; height: 2px; background: #A1004F; border-radius: 2px; transition: transform .2s, opacity .2s; }
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  header nav, header nav .left-links { overflow: visible !important; flex-direction: column !important; align-items: stretch !important; width: 100% !important; gap: 0 !important; margin: 0 !important; padding: 0 !important; }
+  header nav { display: none !important; order: 3; flex: 0 0 100%; background: #fff; border-radius: 16px; box-shadow: 0 12px 26px rgba(75,0,42,.12); padding: 10px !important; }
+  header nav.mobile-menu-open { display: flex !important; }
+  header nav a { display: block; padding: 12px 14px; font-size: 17px !important; color: #A1004F !important; white-space: normal !important; text-decoration: none !important; }
+  header nav a.active { background: #FAF4FF; border-radius: 9px; }
+  header nav .register, header nav .button { margin: 0 !important; }
+  header .mobile-menu-actions { display: flex; flex-direction: column; border-top: 1px solid #F4E5EF; padding-top: 6px; }
+  header .mobile-menu-actions a { color: #A1004F !important; }
+  header .mobile-menu-actions .mobile-primary { background: #A1004F; color: #fff !important; border-radius: 10px; text-align: center; margin-top: 6px; }
+}
+</style>
 </head>
 <body>
 
@@ -455,15 +478,16 @@
                         <div class="bottom">Алисы Шарко</div>
                     </div>
                 </div>
-                <nav>
+                <nav id="mobile-site-nav">
                     <a href="index.html">Главная</a>
                     <a href="schedule.html">Расписание</a>
                     <a href="subscriptions.html" class="active">Абонементы</a>
                     <a href="about.html">О нас</a>
                     <a href="contacts.html">Контакты</a>
-                </nav>
+                <div class="mobile-menu-actions"><a href="login.html" class="mobile-primary">Записаться</a></div></nav>
             </div>
             <a href="login.html" class="signup-button">Личный кабинет</a>
+        <button type="button" class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-site-nav"><span></span><span></span><span></span></button>
         </header>
 
         <!-- PAGE CONTENT -->
@@ -625,5 +649,20 @@
             });
         });
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const nav = document.getElementById('mobile-site-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function () {
+    const opened = nav.classList.toggle('mobile-menu-open');
+    toggle.setAttribute('aria-expanded', String(opened));
+    toggle.setAttribute('aria-label', opened ? 'Закрыть меню' : 'Открыть меню');
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') { nav.classList.remove('mobile-menu-open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+});
+</script>
 </body>
 </html>
